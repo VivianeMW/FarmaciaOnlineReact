@@ -1,0 +1,59 @@
+header#main-header {
+    background     : #73c5ff;
+    width          : 100%;
+    font-size      : 18px;
+    font-weight    : bold;
+    color          : #fff;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+    box-shadow     : 0px 1px 8px #101010;
+}
+
+.div-container {
+    width         : 100%;
+    display       : flex;
+    flex-direction: row;
+    height        : 75px;
+}
+
+.h-header {
+    width      : 150px;
+    margin     : auto;
+    text-align : center;
+}
+
+#div-busca {
+    display       : flex;
+    flex-direction: row;
+    border-radius : 15px;
+}
+
+div#h-input-busca {
+    width: 400px;
+}
+
+#h-input-busca input {
+    border       : none;
+    border-radius: 10px 0px 0px 10px;
+    padding      : 5px;
+    width        : 100%; 
+}
+
+#h-input-busca button {
+    background   : #fff;
+    border       : none;
+    border-radius: 0px 10px 10px 0px;
+    cursor       : pointer;
+    padding      : 10px;
+}
+
+#img-logo {
+    height    : 60px;
+    width     : 80px;
+    margin-top: 10px;
+}
+
+.h-header a {
+    text-decoration: none;
+}
