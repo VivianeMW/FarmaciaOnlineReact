@@ -1,0 +1,102 @@
+.main-container-carrinho {
+    max-width            : 980px;
+    margin               : 0 auto;
+    padding              : 50px 0;
+    text-align           : center; 
+    display              : grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap             : 30px;
+}
+
+.main-container-carrinho ul {
+    list-style           : none;
+    display              : grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap             : 30px;
+    margin-top           : 50px;
+}
+
+.main-container-carrinho .empty {
+    font-size  : 32px;
+    color      : #999;
+    font-weight: bold;
+    margin-top : 182px;
+}
+
+.main-container-carrinho ul li {
+    display       : flex;
+    flex-direction: row;
+}
+
+.div-card-carrinho {
+    background-color     : #fff; 
+    box-shadow           : 5px 5px 4px;
+    border-radius        : 0px 0px 5px 5px;
+    display              : grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap             : 20px;
+    padding              : 10px;
+}
+
+.main-container ul li div p {
+    font-size  : 15px;
+    /* line-height: 20px; */
+    color      : #999;
+    margin-top : 5px;
+    word-break : break-all;
+}
+
+.div-descricao-carrinho {
+    align-items    : flex-start;
+    justify-content: left;
+    display        : flex;
+    flex-direction : column;
+}
+
+.div-resumo {    
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    border: 1px solid black;
+    background-color: #ece7e7;
+    width: 16em;
+    height: 17em;
+    box-shadow: 5px 5px 5px;
+}
+
+.h-titulo {
+    text-align: left;
+}
+
+.itens-resumo {
+    display: flex;
+    flex-direction: row;   
+}
+
+.itens-resumo span {
+    padding: 10px;
+    color: #a9a5a5;
+}
+
+.itens-resumo strong {
+    padding: 5px;
+}
+
+.div-resumo hr {
+    width: 100%;
+}
+
+.div-resumo span {
+    padding: 10px;
+}
+
+.itens-resumo-total {
+    display: flex;
+    flex-direction: row;    
+    font-weight: bold;
+}
+
+.div-resumo-botao {
+   padding: 10px;
+}

@@ -35,7 +35,9 @@ export default class Header extends Component {
                        </Link> 
                     </div>
                     <div id="h-icon-cart" className="h-header">
-                        <MdAddShoppingCart />
+                        <Link to="/carrinho">
+                            <MdAddShoppingCart />
+                        </Link>
                     </div>
                 </div>
             </header>
