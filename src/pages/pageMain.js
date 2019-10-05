@@ -5,43 +5,46 @@ import React, { Component } from 'react';
 
 import '../css/cssPageMain.css';
 
-// import api from '.'
+import api from '../services/api';
+import Reme from '../img/reme1.jpg';
+import { Link } from 'react-router-dom';
+// import FormatCurrency from 'react-format-currency';
+// import { setState } from 'expect/build/jestMatchersObject';
 
 export default class PageMain extends Component {
 
     state = {
-        produtos : [
-            {
-                img      : "Andrew",
-                titulo   : "Nome do Produto",
-                descricao: "asasasasasasasasasasasasasasasasadsdsdd",
-                preco    : 10
-            },
-            {
-                img      : "Andrew",
-                titulo   : "Nome do Produto",
-                descricao: "asasasasasasasasasasasasasasasasasasasasas",
-                preco    : 10
-            },
-            {
-                img      : "Andrew",
-                titulo   : "Nome do Produto",
-                descricao: "asasasasasasasasasasasasasasasasasasasasas",
-                preco    : 10
-            },
-            {
-                img      : "Andrew",
-                titulo   : "Nome do Produto",
-                descricao: "asasasasasasasasasasasasasasasasasasasasas",
-                preco    : 10
-            },
-            {
-                img      : "Andrew",
-                titulo   : "Nome do Produto",
-                descricao: "asasasasasasasasasasasasasasasasasasasasas",
-                preco    : 10
-            },
-        ],
+        produtos : [],
+        produto : {}
+    };
+
+    // componentDidMount() {
+    //     debugger;
+    //     this.carregaProdutos();
+    // }
+
+    componentDidMount() {
+        this.loadProducts();
+    };
+
+
+    loadProducts = async function() {
+        const response = await api.get(`Produto`);
+        console.log(response.data);
+
+        this.setState({
+            produtos : response.data
+        });
+    }
+
+    adicionaLocalStorage = produto => {
+        // const { produto } = this.state;
+
+        alert(produto.id)
+        localStorage.setItem(produto.id, JSON.stringify(produto));
+        this.setState({
+            redireciona: true
+        });
     };
 
     render() {
@@ -52,18 +55,22 @@ export default class PageMain extends Component {
                     <ul> 
                         {produtos.map(produto =>{
                             return (
-                                <li key={produto._id}>
+                                <li key={produto.id}>
                                     <div className="div-card">
                                         <header>
-                                            {produto.img}
-                                            <button className="btn-circle">+</button>
+                                            <Link to={`/produto/${produto.id}`}>
+                                                <img id="img-reme" src={Reme}/>
+                                            </Link>
+                                            {/* <Link to={`produto/${produto.id}`}></Link> */}
                                         </header>
+                                        <hr/>
                                         <footer>
                                             <strong>{produto.titulo}</strong>
                                             <p>{produto.descricao}</p>
                                             <div className="footer-card">
                                                 <span>{produto.preco}</span>
-                                                <button className="btn-compra">Compra</button>
+                                                {/* {this.state.produto = produto} */}
+                                                <button onClick={ e =>this.adicionaLocalStorage(produto)} className="btn-compra">ADD CARRINHO</button>
                                             </div>
                                         </footer>
                                     </div>
