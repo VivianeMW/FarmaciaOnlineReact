@@ -91,7 +91,7 @@ export default class PageCarrinho extends Component {
                         <ul>
                             {produtos.map(produto =>{
                                 return (
-                                    <li key={produto._id}>
+                                    <li key={produto.id}>
                                         <div className="div-card-carrinho">
                                             <h5 className="h-titulo">Produto</h5>
                                             <h5 className="h-titulo">Descricao</h5>
