@@ -49,6 +49,11 @@ export default class PageCarrinho extends Component {
         });
     };
 
+    removeLocalStorege = (id) => {
+        localStorage.removeItem(id);
+        window.location.reload();
+    };
+
     getPrecoTotal = () => {
         const { tProdutos } = this.state;
         let preco = 0;
@@ -118,6 +123,7 @@ export default class PageCarrinho extends Component {
                                                             <option value="0" label="0">0</option>
                                                         </select>
                                                     )}
+                                                    <button onClick={e => this.removeLocalStorege(produto.id)}>remover</button>
                                             </div>
                                             <div className="div-entrega-carrinho">
                                                 <span>10/10/2019</span>

@@ -50,7 +50,6 @@ export default class PageMain extends Component {
 
     adicionaLocalStorage = produto => {
 
-        alert(produto.id)
         localStorage.setItem(produto.id, JSON.stringify(produto));
         this.setState({
             redireciona: true
