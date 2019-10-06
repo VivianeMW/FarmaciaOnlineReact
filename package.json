@@ -6,9 +6,8 @@
     "axios": "^0.19.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
-    "react-format-currency": "^0.1.2",
     "react-icons": "^3.7.0",
-    "react-intl": "^3.3.2",
+    "react-number-format": "^4.3.0",
     "react-router-dom": "^5.1.1",
     "react-scripts": "3.1.2"
   },

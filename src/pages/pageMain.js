@@ -5,11 +5,10 @@ import React, { Component } from 'react';
 
 import '../css/cssPageMain.css';
 
-import api from '../services/api';
-import Reme from '../img/reme1.jpg';
-import { Link } from 'react-router-dom';
-// import FormatCurrency from 'react-format-currency';
-// import { setState } from 'expect/build/jestMatchersObject';
+import api          from '../services/api';
+import Reme         from '../img/reme1.jpg';
+import { Link }     from 'react-router-dom';
+import NumberFormat from 'react-number-format';
 
 const LIMIT_ITENS = 8;
 
@@ -21,11 +20,6 @@ export default class PageMain extends Component {
         page     : 1,
         pages    : 1
     };
-
-    // componentDidMount() {
-    //     debugger;
-    //     this.carregaProdutos();
-    // }
 
     componentDidMount() {
         this.carregaProdutos();
@@ -97,18 +91,26 @@ export default class PageMain extends Component {
                             return (
                                 <li key={produto.id}>
                                     <div className="div-card">
-                                        <header>
-                                            <Link to={`/produto/${produto.id}`}>
+                                        <Link to={`/produto/${produto.id}`}>
+                                            <header>
                                                 <img id="img-reme" src={Reme}/>
-                                            </Link>
-                                            {/* <Link to={`produto/${produto.id}`}></Link> */}
-                                        </header>
+                                            </header>
+                                        </Link>
                                         <hr/>
                                         <footer>
                                             <strong>{produto.titulo}</strong>
                                             <p>{produto.descricao}</p>
                                             <div className="footer-card">
-                                                <span>{produto.preco}</span>
+                                                <span>
+                                                    <NumberFormat 
+                                                        value={produto.preco} 
+                                                        displayType={'text'}
+                                                        prefix={'R$'}
+                                                        decimalSeparator={','}
+                                                        decimalScale={2}
+                                                        fixedDecimalScale={true}
+                                                    />
+                                                </span>
                                                 {/* {this.state.produto = produto} */}
                                                 <button onClick={ e =>this.adicionaLocalStorage(produto)} className="btn-compra">ADD CARRINHO</button>
                                             </div>

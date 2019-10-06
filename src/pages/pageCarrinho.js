@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import '../css/cssPageCarrinho.css';
-import ImgReme from '../img/reme1.jpg';
+
+import ImgReme      from '../img/reme1.jpg';
+import NumberFormat from 'react-number-format';
 
 const LIMIT_ITENS = 4;
 
@@ -121,7 +123,14 @@ export default class PageCarrinho extends Component {
                                                 <span>10/10/2019</span>
                                             </div>
                                             <div className="div-preco-carrinho">
-                                                {produto.preco}
+                                               <NumberFormat 
+                                                    value={produto.preco} 
+                                                    displayType={'text'}
+                                                    prefix={'R$'}
+                                                    decimalSeparator={','}
+                                                    decimalScale={2}
+                                                    fixedDecimalScale={true}
+                                                />
                                             </div>
                                         </div>
                                     </li>
@@ -139,16 +148,43 @@ export default class PageCarrinho extends Component {
                             <strong>Resumo Pedido</strong>
                             <div className="itens-resumo">
                                 <span>Subtotal({produtos.length} produto(os))</span>
-                                <span>R${this.getPrecoTotal()}</span>
+                                <span>
+                                    <NumberFormat 
+                                        value={this.getPrecoTotal()} 
+                                        displayType={'text'}
+                                        prefix={'R$'}
+                                        decimalSeparator={','}
+                                        decimalScale={2}
+                                        fixedDecimalScale={true}
+                                    />
+                                </span>
                             </div>
                             <div  className="itens-resumo">
                                 <span>Frete</span>
-                                <span>R${this.getPrecoTotal()}</span>
+                                <span>
+                                    <NumberFormat 
+                                        value={this.getPrecoTotal()} 
+                                        displayType={'text'}
+                                        prefix={'R$'}
+                                        decimalSeparator={','}
+                                        decimalScale={2}
+                                        fixedDecimalScale={true}
+                                    />
+                                </span>
                             </div>
                             <hr/>
                             <div className="itens-resumo-total">
-                            <span>Total</span>
-                            <span>{this.getPrecoTotal()}</span>
+                                <span>Total</span>
+                                <span>
+                                    <NumberFormat 
+                                        value={this.getPrecoTotal()} 
+                                        displayType={'text'}
+                                        prefix={'R$'}
+                                        decimalSeparator={','}
+                                        decimalScale={2}
+                                        fixedDecimalScale={true}
+                                    />
+                                </span>
                             </div>
                             <hr/>
                             {/* <div className="div-resumo-botao">
