@@ -1,16 +1,17 @@
 .main-container {
-    max-width : 980px;
+    max-width : 66em;
     margin    : 0 auto;
     padding   : 50px 0;
     text-align: center; 
+    height    : 100%;
+    position  : relative;
 }
 
 .main-container ul {
     list-style           : none;
     display              : grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap             : 30px;
-    margin-top           : 50px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap             : 2em;
 }
 
 .main-container ul li {
@@ -22,7 +23,7 @@
     flex                 : 1;
     background-color     :#dcd9d9;
     background-attachment:#fff;
-    padding              : 15px 20px;
+    padding              : 5px 20px;
     text-align           : left;
     border-radius        : 0 0 5px 5px;
 }
@@ -52,6 +53,7 @@
     box-shadow      : 5px 5px 4px;
     border-radius   : 0px 0px 5px 5px;
     border          : 1px solid black;
+    width: 15em;
 }
 
 .btn-compra {
@@ -87,4 +89,45 @@
     margin          : 4px 2px;
     border-radius   : 50%;
     cursor          : pointer;
+}
+
+#img-reme {
+    height: 6em;
+    width: 6em;
+}
+
+.actions {
+    display        : flex;
+    justify-content: space-between;
+    margin-top     : 1em;
+}
+
+.actions button {
+    padding      : 10px;
+    border-radius: 5px;
+    border       : 0;
+    background   : #0433ff;
+    color        : #fff;
+    font-size    : 16px;
+    font-weight  : bold;
+    cursor       : pointer;
+}
+
+.actions button[disabled] {
+    opacity: 0.5;
+    cursor : default;
+}
+
+.actions button:hover {
+    opacity: 0.7;
+}
+
+.actions button[disabled]:hover {
+    opacity: 0.5;
+}
+
+.footer-main-container {
+    position:absolute;
+    bottom:0;
+    width:100%;
 }

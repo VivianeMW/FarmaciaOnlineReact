@@ -11,11 +11,15 @@ import { Link } from 'react-router-dom';
 // import FormatCurrency from 'react-format-currency';
 // import { setState } from 'expect/build/jestMatchersObject';
 
+const LIMIT_ITENS = 8;
+
 export default class PageMain extends Component {
 
     state = {
         produtos : [],
-        produto : {}
+        produto  : {},
+        page     : 1,
+        pages    : 1
     };
 
     // componentDidMount() {
@@ -24,21 +28,33 @@ export default class PageMain extends Component {
     // }
 
     componentDidMount() {
-        this.loadProducts();
+        this.carregaProdutos();
     };
 
 
-    loadProducts = async function() {
-        const response = await api.get(`Produto`);
+    carregaProdutos = async function(page = 1) {
+        const response = await api.get(`/Produto`);
         console.log(response.data);
 
+        let result      = [];
+        let totalPage   = Math.ceil(response.data.length/LIMIT_ITENS); 
+        let count       = (page * LIMIT_ITENS) - LIMIT_ITENS;
+        let delimitador = count + LIMIT_ITENS;
+
+        for(let i = count; i < delimitador; i++) {
+            if(response.data[i] != null) {
+                result.push(response.data[i]);
+            }
+        }
+
         this.setState({
-            produtos : response.data
+            produtos : result,
+            pages    : totalPage,
+            page
         });
     }
 
     adicionaLocalStorage = produto => {
-        // const { produto } = this.state;
 
         alert(produto.id)
         localStorage.setItem(produto.id, JSON.stringify(produto));
@@ -47,8 +63,32 @@ export default class PageMain extends Component {
         });
     };
 
+    nextPage = () => {
+        const { page, pages } = this.state;
+
+        if(page == pages) {
+            return;
+        }
+
+        const nPagina = page + 1;
+
+        this.carregaProdutos(nPagina);
+    };
+
+    prevPage = () => {
+        const { page } = this.state;
+
+        if(page == 1) {
+            return;
+        }
+
+        const nPagina = page - 1;
+
+        this.carregaProdutos(nPagina);
+    };
+    
     render() {
-        const { produtos } = this.state;
+        const { produtos, page, pages } = this.state;
         return (
             <div className="main-container">
                 {produtos.length > 0 ? (
@@ -83,6 +123,15 @@ export default class PageMain extends Component {
                         Acabou :(
                     </div>
                 )}
+
+                {produtos.length > 0? (
+                    <footer className="footer-main-container">
+                        <div className="actions">
+                            <button disabled={page == 1}     onClick={this.prevPage}>Anterior</button>
+                            <button disabled={page == pages} onClick={this.nextPage}>Proximo</button>
+                        </div>
+                    </footer>
+                ) : ""}
             </div>
         );
     };

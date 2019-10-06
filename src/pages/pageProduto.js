@@ -15,7 +15,7 @@ export default class Produto extends Component {
     async componentDidMount() {
         const { id } = this.props.match.params;
 
-        const response = await api.get(`Produto/${id}`);
+        const response = await api.get(`/Produto/${id}`);
 
         console.log(response.data);
 
