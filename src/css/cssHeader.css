@@ -40,7 +40,7 @@ div#h-input-busca {
     width        : 100%; 
 }
 
-#h-input-busca button {
+#h-input-busca .btn-input {
     background   : #fff;
     border       : none;
     border-radius: 0px 10px 10px 0px;
@@ -56,4 +56,68 @@ div#h-input-busca {
 
 .h-header a {
     text-decoration: none;
+}
+
+.oculta {
+    display: none;
+}
+
+.destaca {
+    opacity: 1;
+    visibility: visible;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; 
+}
+
+.caixa-oculta {
+    margin-top: 1em;
+    width: 8em;
+    height: 4em;
+    background: #fff;
+    color: #000;
+    /* background-color: #0a0909; */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; */
+    text-align: start;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+#header-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* opacity: 0; */
+    background: #333;
+    transition: all .5s,z-index 0s;
+    transition-property: all, z-index;
+    transition-duration: 0.5s, 0s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+    /* visibility: hidden; */
+    z-index: 99;
+}
+
+.btn-ic-clicavel {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-left: 1em;
+}
+
+.opacidade-visivel {
+    opacity: 0.5;
+    visibility: visible;
+}
+
+.opacidade-oculta {
+    opacity: 0;
+    visibility: hidden;
 }

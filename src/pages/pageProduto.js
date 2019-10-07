@@ -17,7 +17,7 @@ export default class Produto extends Component {
 
         const response = await api.get(`/Produto/${id}`);
 
-        console.log(response.data);
+        // console.log(response.data);
 
         this.setState({
             produto: response.data

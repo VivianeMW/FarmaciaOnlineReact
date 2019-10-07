@@ -12,6 +12,7 @@ const Routes = function() {
     return (
         <Switch>
             <Route exact path="/"      component={PageMain}/>
+            <Route path="/pesquisa/:filtro" component={PageMain}/>
             <Route path="/login"       component={PageLogin}/>
             <Route path="/cadastro"    component={PageCadastro}/>
             <Route path="/carrinho"    component={PageCarrinho}/>

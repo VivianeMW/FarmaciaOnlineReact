@@ -25,10 +25,21 @@ export default class PageMain extends Component {
         this.carregaProdutos();
     };
 
+    componentDidUpdate() {
+        this.carregaProdutos();
+    }
 
     carregaProdutos = async function(page = 1) {
-        const response = await api.get(`/Produto`);
-        console.log(response.data);
+        let response = null;
+        // console.log(response.data);
+        // console.log('filtro: ' + JSON.parse(this.props.match.params.filtro));
+
+        if(typeof this.props.match.params.filtro === 'undefined') {
+            response = await api.get(`/Produto`);
+        } else {
+            let oFiltro = JSON.parse(this.props.match.params.filtro);;
+            response = await api.get(`/Produto/conteudo=${oFiltro.conteudo}&filtro=${oFiltro.filtro}`);
+        }
 
         let result      = [];
         let totalPage   = Math.ceil(response.data.length/LIMIT_ITENS); 
