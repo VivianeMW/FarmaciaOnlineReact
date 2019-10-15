@@ -2,15 +2,21 @@ import React, { Component } from 'react';
 
 import '../css/cssPageLogin.css';
 import { Link } from 'react-router-dom';
+import { ContextoUsuario } from '../components/Session';
+
 
 export default class PageLogin extends Component {
     
+    static contextType = ContextoUsuario;
+
     state = {
         username: '',
     };
 
     render() {
+        
         const { username } = this.state;
+
         return (
             <div className="login-main-container">
                 <header>

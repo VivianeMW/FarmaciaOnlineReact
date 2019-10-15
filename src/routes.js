@@ -11,12 +11,12 @@ import PageProduto  from './pages/pageProduto';
 const Routes = function() {
     return (
         <Switch>
-            <Route exact path="/"      component={PageMain}/>
+            <Route exact path="/"           component={PageMain}/>
             <Route path="/pesquisa/:filtro" component={PageMain}/>
-            <Route path="/login"       component={PageLogin}/>
-            <Route path="/cadastro"    component={PageCadastro}/>
-            <Route path="/carrinho"    component={PageCarrinho}/>
-            <Route path="/produto/:id" component={PageProduto}/>
+            <Route path="/login"            component={PageLogin}/>
+            <Route path="/cadastro"         component={PageCadastro}/>
+            <Route path="/carrinho"         component={PageCarrinho}/>
+            <Route path="/produto/:id"      component={PageProduto}/>
         </Switch>
     );
 }

@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 
 import '../css/cssPageCadastro.css';
 
+import { ContextoUsuario } from '../components/Session';
+
 export default class PageCadastro extends Component {
     
+    static contextType = ContextoUsuario;
+
     state = {
         username: '',
     };
 
     render() {
         const { username } = this.state;
+        
         return (
             <div className="cadastro-main-container">
                 <header>

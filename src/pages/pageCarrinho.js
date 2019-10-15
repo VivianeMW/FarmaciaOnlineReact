@@ -5,9 +5,13 @@ import '../css/cssPageCarrinho.css';
 import ImgReme      from '../img/reme1.jpg';
 import NumberFormat from 'react-number-format';
 
+import { ContextoUsuario } from '../components/Session';
+
 const LIMIT_ITENS = 4;
 
 export default class PageCarrinho extends Component {
+
+    static contextType = ContextoUsuario;
 
     state = {
         produtos  : [],

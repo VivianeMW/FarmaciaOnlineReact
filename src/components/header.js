@@ -7,10 +7,14 @@ import { Link } from 'react-router-dom';
 import '../css/cssHeader.css';
 
 import { MdAccountCircle, MdAddShoppingCart, MdSearch, MdFilterList } from 'react-icons/md';
-import logo from '../img/logo.svg';
-import { Redirect }  from 'react-router-dom';
+
+import logo                from '../img/logo.svg';
+import { Redirect }        from 'react-router-dom';
+import { ContextoUsuario } from '../components/Session';
 
 export default class Header extends Component {
+
+    static contextType = ContextoUsuario;
 
     state = {
         redireciona : false,

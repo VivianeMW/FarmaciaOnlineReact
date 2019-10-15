@@ -3,16 +3,21 @@ import api from '../services/api';
 
 
 import '../css/cssPageProduto.css';
-import ImgReme from '../img/reme1.jpg';
-import { Redirect }  from 'react-router-dom';
+import ImgReme             from '../img/reme1.jpg';
+import { Redirect }        from 'react-router-dom';
+import { ContextoUsuario } from '../components/Session';
 
 export default class Produto extends Component {
+
+    static contextType = ContextoUsuario;
+
     state = {
         produto : {},
         redireciona : false
     };
     
     async componentDidMount() {
+
         const { id } = this.props.match.params;
 
         const response = await api.get(`/Produto/${id}`);

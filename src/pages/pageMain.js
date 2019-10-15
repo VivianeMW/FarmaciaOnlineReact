@@ -5,32 +5,59 @@ import React, { Component } from 'react';
 
 import '../css/cssPageMain.css';
 
-import api          from '../services/api';
-import Reme         from '../img/reme1.jpg';
-import { Link }     from 'react-router-dom';
-import NumberFormat from 'react-number-format';
+import api                 from '../services/api';
+import Reme                from '../img/reme1.jpg';
+import { Link }            from 'react-router-dom';
+import NumberFormat        from 'react-number-format';
+import { ContextoUsuario } from '../components/Session';
 
 const LIMIT_ITENS = 8;
 
 export default class PageMain extends Component {
 
+    static contextType = ContextoUsuario;
+
     state = {
         produtos : [],
         produto  : {},
         page     : 1,
-        pages    : 1
+        pages    : 1,
+        filtrar  : false
     };
 
     componentDidMount() {
+
+        const { usuarioLogin } = this.context;
+
+        usuarioLogin();
+
         this.carregaProdutos();
     };
 
     componentDidUpdate() {
-        this.carregaProdutos();
+
+        // if(typeof this.props.match.params.filtro === 'undefined') {
+        //     if(this.state.filtrar) {
+        //         this.carregaProdutos();
+        //         this.setState({
+        //             filtrar : false
+        //         });
+        //     }
+        //     return;
+        // }
+        
+        // this.carregaProdutos();
+        // const { usuarioAutenticado } = this.context;
+        // this.carregaProdutos(this.state.page);
+        // this.setState({
+        //     filtrar : true
+        // });
     }
 
     carregaProdutos = async function(page = 1) {
         let response = null;
+
+        console.log("page:" + page);
         // console.log(response.data);
         // console.log('filtro: ' + JSON.parse(this.props.match.params.filtro));
 
@@ -55,7 +82,7 @@ export default class PageMain extends Component {
         this.setState({
             produtos : result,
             pages    : totalPage,
-            page
+            page,
         });
     }
 
@@ -93,6 +120,8 @@ export default class PageMain extends Component {
     
     render() {
         const { produtos, page, pages } = this.state;
+        
+        const { authuser } = this.props;
         return (
             <div className="main-container">
                 {produtos.length > 0 ? (
