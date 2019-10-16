@@ -1,81 +1,76 @@
 import React, { Component } from 'react';
-
-import '../css/cssPageUserLog.css';
 import { Redirect } from 'react-router-dom';
-import { ContextoUsuario } from '../components/Session';
 
+import { ContextoUsuario } from '../components/Session';
 import Navbar from '../components/usuario/navbar';
 
-export default class PageUsuarioLog extends Component {
-    
+
+class PageEndereco extends Component {
+
     static contextType = ContextoUsuario;
 
     state = {
         user : {},
+        endereco : {},
         redireciona : false
     }
 
     componentDidMount() {
+        debugger
         let { usuarioAutenticado } = this.context;
-        let bRedireciona = false;
+        let  bRedireciona = false;
 
         if(usuarioAutenticado == null) {
             bRedireciona = true;
         }
 
         this.setState({
-            user : this.context.usuarioAutenticado,
+            user : usuarioAutenticado,
+            endereco: usuarioAutenticado.endereco,
             redireciona : bRedireciona
         });
     }
 
-    componentDidUpdate() {
-        let { usuarioAutenticado } = this.context;
-
-        if(!(usuarioAutenticado == null)) {
-            return
-        }
-
-        this.setState({
-            redireciona : true
-        });
-    }
-
-    redireciona = ()=> {
+    redireciona = () => {
         if(!this.state.redireciona) {
             return;
         }
 
-        return <Redirect  to={`/`} />;
+        return <Redirect to={"/"}/>
     }
 
     render() {
-        const { user } = this.state;
+        const { user, endereco } = this.state;
 
         return (
-            <div className="user-main-container">
+            <div>
                 {this.redireciona()}
-                <header>
-                    <Navbar />
-                </header>
+                <header><Navbar /></header>
                 <div className="container-list">
                     <h3>Dados Cadastrais</h3>
                     <hr/>
-                    <p><strong>Nome Completo</strong></p>
-                    <p>{user.nome}</p>
-                    <p><strong>E-mail</strong></p>
-                    <p>{user.email}</p>
-                    <p><strong>CPF</strong></p>
-                    <p>{user.cpf}</p>
+                    <h3>Endereco</h3>
                     <p><strong>ID</strong></p>
+                    <p>{endereco.id}</p>
+                    <p><strong>Número</strong></p>
+                    <p>{endereco.numero}</p>
+                    {/* 
+                    {/* <p><strong>Rua</strong></p>
+                    <p>{user.nome}</p>
+                    <p><strong>CEP</strong></p>
+                    <p>{user.email}</p>
+                    <p><strong>Cidade</strong></p>
+                    <p>{user.cpf}</p> */}
+                    {/* <p><strong>ID</strong></p>
                     <p>{user.id}</p>
                     <h3>Contato</h3>
                     <hr/>
                     <p><strong>Telefone</strong></p>
-                    <p>{user.telefone}</p>
+                    <p>{user.telefone}</p>     */}
                 </div>
             </div>
         );
-    };
-
+    }
 }
+
+export default PageEndereco;

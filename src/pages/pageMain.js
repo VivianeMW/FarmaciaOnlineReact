@@ -26,7 +26,6 @@ export default class PageMain extends Component {
     };
 
     componentDidMount() {
-        debugger;
         const { usuarioLogin, pesquisar, pesquisarInativo } = this.context;
 
         usuarioLogin();
@@ -56,7 +55,6 @@ export default class PageMain extends Component {
         // console.log(response.data);
         // console.log('filtro: ' + JSON.parse(this.props.match.params.filtro));
 
-        debugger;
         if(typeof this.context.filtro === 'object') {
             response = await api.get(`/Produto`);
         } else {

@@ -16,7 +16,6 @@ class App extends Component {
   }
 
   usuarioLogin = async (user) => {
-    debugger;
 
     if(typeof user === 'undefined') {
       return;
