@@ -1,38 +1,23 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import NumberFormat from 'react-number-format';
+import api          from '../services/api';
 
 import { ContextoUsuario } from '../components/Session';
 import Navbar              from '../components/usuario/navbar';
 
+const LIMIT_ITENS = 8;
 
 class PagePedido extends Component {
 
     static contextType = ContextoUsuario;
 
     state = {
-        user : {},
-        pedido : [
-            {
-                data: '25/08/2019',
-                nPedido: '02368461',
-                preco: 104,
-                staus: 'entregue'
-            },
-            {
-                data: '25/08/2019',
-                nPedido: '02368461',
-                preco: 104,
-                staus: 'entregue'
-            },
-            {
-                data: '25/08/2019',
-                nPedido: '02368461',
-                preco: 104,
-                staus: 'entregue'
-            }
-        ],
-        redireciona : false
+        user        : {},
+        pedidos     : [],
+        redireciona : false,
+        page        : 1,
+        pages       : 1,
     }
 
     componentDidMount() {
@@ -47,6 +32,37 @@ class PagePedido extends Component {
             user : usuarioAutenticado,
             redireciona : bRedireciona
         });
+
+        this.carregaPedidos();
+    }
+
+    carregaPedidos = async (page = 1) => {
+        let response =  null;
+        let { usuarioAutenticado } = this.context;
+
+        if(usuarioAutenticado == null) {
+            return;
+        }
+
+        debugger;
+        response = await api.get(`/Pedido/pedidos?usuid=${usuarioAutenticado.id}`);
+
+        let result      = [];
+        let totalPage   = Math.ceil(response.data.length/LIMIT_ITENS); 
+        let count       = (page * LIMIT_ITENS) - LIMIT_ITENS;
+        let delimitador = count + LIMIT_ITENS;
+
+        for(let i = count; i < delimitador; i++) {
+            if(response.data[i] != null) {
+                result.push(response.data[i]);
+            }
+        }
+
+        this.setState({
+            pedidos : result,
+            pages   : totalPage,
+            page,
+        });
     }
 
     redireciona = () => {
@@ -57,8 +73,32 @@ class PagePedido extends Component {
         return <Redirect to={"/"}/>
     }
 
+    nextPage = () => {
+        const { page, pages } = this.state;
+
+        if(page == pages) {
+            return;
+        }
+
+        const nPagina = page + 1;
+
+        this.carregaPedidos(nPagina);
+    };
+
+    prevPage = () => {
+        const { page } = this.state;
+
+        if(page == 1) {
+            return;
+        }
+
+        const nPagina = page - 1;
+
+        this.carregaPedidos(nPagina);
+    };
+
     render() {
-        const { user, pedido } = this.state;
+        const { user, pedidos } = this.state;
 
         return (
             <div>
@@ -66,13 +106,14 @@ class PagePedido extends Component {
                 <header><Navbar /></header>
                 <div className="container-list">
                     <h3>Pedidos Realizados</h3>
-                    {pedido.length>0 ? (
+                    {pedidos.length>0 ? (
                         <ul>
-                            {pedido.map(pedido => {
+                            {pedidos.map(pedido => {
                                 return (
                                     <li key={pedido._id}>
                                         <div className="container-list">
                                             <hr/>
+                                            <p><strong>ID:</strong>{pedido.id}</p>
                                             <p><strong>Data:</strong>{pedido.data}</p>
                                             <p><strong>Nº pedido:</strong>{pedido.nPedido}</p>
                                             <p>
@@ -88,7 +129,7 @@ class PagePedido extends Component {
                                                     />
                                                 </span>
                                             </p>
-                                            <p><strong>Status:</strong>{pedido.staus}</p>
+                                            <p><strong>Status:</strong>{pedido.status}</p>
                                         </div>
                                     </li>
                                 );
