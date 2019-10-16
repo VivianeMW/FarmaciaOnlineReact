@@ -4,39 +4,105 @@ import Routes from './routes';
 import './css/cssStyle.css';
 
 import Header              from './components/header';
+import api                 from './services/api';
 import { ContextoUsuario } from './components/Session';
 
 class App extends Component {
 
   state = {
-    usuarioAutenticado : {}
+    usuarioAutenticado : null,
+    pesquisar          : false,
+    filtro             : null
   }
 
-  usuarioLogin = () => {
+  usuarioLogin = async (user) => {
+    debugger;
+
+    if(typeof user === 'undefined') {
+      return;
+    }
+
+    const response = await api.get(`/Usuario/login?email=${user.email}&senha=${user.senha}`);
+
     this.setState({
-        usuarioAutenticado : {
-          id : '3'
-        }
+        usuarioAutenticado : response.data
+    });
+  }
+
+  pesquisarAtivo = () => {
+    this.setState({
+      pesquisar : true
+    });
+  }
+
+  pesquisarInativo = () => {
+    console.log('inativo')
+    this.setState({
+      pesquisar : false
+    });
+  }
+
+  limpaFiltro = () => {
+    this.setState({
+      filtro : null
+    });
+  }
+
+  preencheFiltro = (filtro) => {
+    this.setState({
+      filtro : filtro
     });
   }
 
   render() {
     
-    const { usuarioLogin } = this;
+    const { 
+      usuarioLogin, 
+      pesquisarAtivo,
+      pesquisarInativo,
+      preencheFiltro,
+      limpaFiltro
+      } = this;
 
     const value = {
         ...this.state,
-        usuarioLogin
+        usuarioLogin,
+        pesquisarAtivo,
+        pesquisarInativo,
+        preencheFiltro,
+        limpaFiltro
     }
 
     return(
         <ContextoUsuario.Provider value={value}>
           <ContextoUsuario.Consumer> 
             {
-              ({ usuarioLogin, usuarioAutenticado }) => (
+              ({ 
+                usuarioLogin, 
+                usuarioAutenticado, 
+                pesquisar, 
+                pesquisarAtivo,
+                pesquisarInativo,
+                limpaFiltro,
+                preencheFiltro,
+                filtro
+              }) => (
                 <div className="App">
-                  <Header {...{ usuarioAutenticado }}  />
-                  <Routes {...{ usuarioLogin, usuarioAutenticado }}  />
+                  <Header {...{ 
+                    usuarioAutenticado, 
+                    pesquisarAtivo,
+                    pesquisarInativo,
+                    filtro,
+                    preencheFiltro,
+                    limpaFiltro 
+                  }}  />
+
+                  <Routes {...{ 
+                    usuarioLogin, 
+                    usuarioAutenticado, 
+                    pesquisar, 
+                    pesquisarAtivo 
+                    }}  />
                 </div>
               )
             }

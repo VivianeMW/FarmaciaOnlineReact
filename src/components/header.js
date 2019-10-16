@@ -18,7 +18,6 @@ export default class Header extends Component {
 
     state = {
         redireciona : false,
-        filtro      : {} 
     }
 
     trocaClasse = () => {
@@ -42,6 +41,10 @@ export default class Header extends Component {
     };
 
     busca = () => {
+        const { preencheFiltro, pesquisarAtivo, pesquisar, limpaFiltro } = this.context;
+
+        this.resetEstadoFiltro();
+
         let oFiltro = {
             conteudo : '',
             filtro   : null
@@ -56,11 +59,20 @@ export default class Header extends Component {
 
         oFiltro.conteudo = document.getElementsByName('input-busca')[0].value;
 
+        if(!pesquisar) {
+            pesquisarAtivo();
+        }
+
         document.getElementsByName('input-busca')[0].value = '';
         
+        preencheFiltro(JSON.stringify(oFiltro));
+
+        if(!oFiltro.conteudo) {
+            limpaFiltro();
+        }
+
         this.setState({
             redireciona : true,
-            filtro      : JSON.stringify(oFiltro)
         });
         
     };
@@ -80,20 +92,48 @@ export default class Header extends Component {
             return;
         }
 
-        if(!JSON.parse(this.state.filtro).conteudo) {
+        if(this.context.filtro == null) {
+            // pesquisarInativo();
             return <Redirect to="/"/>;
         }
 
-        return <Redirect to={`/pesquisa/${this.state.filtro}`}/>;
+
+        return <Redirect to={`/pesquisa/${this.context.filtro}`}/>;
     };
 
+    resetEstadoFiltro = () => {
+        this.setState({
+            filtro : {}
+        });
+    }
+
+    limparFiltro = () => {
+        const { limpaFiltro, pesquisarAtivo } = this.context;
+
+        pesquisarAtivo();
+        limpaFiltro();
+    }
+
+    // redeirecionaUsuarioLogin = () => {
+    //     debugger;
+    //     const { usuarioAutenticado } = this.context;
+        
+    //     if(usuarioAutenticado == null) {
+    //         return <Redirect to={`/login`} />
+    //     }
+        
+    //     return <Redirect to={`/User`} />;
+    // }
+
     render() {
+        const { usuarioAutenticado } = this.context;
+
         return (
             <header id="main-header">
                 <div className="div-container">
                     <div onClick={this.trocaClasse} id="header-overlay" className="opacidade-oculta"></div>
                     <div id="h-logo" className="h-header">
-                        <Link to="/">
+                        <Link to="/" onClick={this.limparFiltro}>
                             <img id="img-logo" src={logo}/>
                         </Link>
                     </div>
@@ -115,9 +155,15 @@ export default class Header extends Component {
                         <span><input type="radio" name="filtro" value="descricao"/>Descricao</span>
                     </div>
                     <div id="h-icon-user" className="h-header">
-                       <Link to={`/login`}>
-                          <MdAccountCircle />
-                       </Link> 
+                        {(usuarioAutenticado == null)? (
+                            <Link to={`/login`}>
+                                <MdAccountCircle />
+                            </Link>
+                        ) : (
+                            <Link to={`/User`}>
+                                <MdAccountCircle />
+                            </Link>
+                        )}
                     </div>
                     <div id="h-icon-cart" className="h-header">
                         <Link to="/carrinho">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import '../css/cssPageLogin.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { ContextoUsuario } from '../components/Session';
 
 
@@ -10,15 +10,53 @@ export default class PageLogin extends Component {
     static contextType = ContextoUsuario;
 
     state = {
-        username: '',
+        user       : {},
+        username   : '',
+        redireciona: false
     };
+
+    logar = () => {
+
+        const { usuarioLogin } = this.context;
+
+        let iEmail = document.getElementById("email");
+        let iSenha = document.getElementById("senha");
+
+        if(!iEmail.value) {
+            alert('nada no input email');
+            return;
+        }
+
+        if(!iSenha.value) {
+            alert('nada no input senha');
+            return;
+        }
+
+        let user = {
+            email : iEmail.value,
+            senha : iSenha.value
+        };
+
+        usuarioLogin(user);
+
+        this.setState({
+            redireciona : true
+        })
+    }
+
+    redireciona = () => {
+        if(!this.state.redireciona) {
+            return;
+        }
+
+        return <Redirect to={`/`}/>;
+    }
 
     render() {
         
-        const { username } = this.state;
-
         return (
             <div className="login-main-container">
+                {this.redireciona()}
                 <header>
                     <strong>Já sou Cliente</strong><br/>
                     <span>Os campos com * são obrigatórios</span>
@@ -27,12 +65,14 @@ export default class PageLogin extends Component {
                 <div className="login-container">
                     <form>
                         <input
+                            id="email"
                             placeholder="E-mail"
                         />
                         <input
+                            id="senha"
                             placeholder="Senha"
                         />
-                        <button type="submit">Logar</button>
+                        <button type="button" onClick={this.logar} >Logar</button>
                     </form>
                 </div>
                 <hr/>

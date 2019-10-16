@@ -26,33 +26,28 @@ export default class PageMain extends Component {
     };
 
     componentDidMount() {
-
-        const { usuarioLogin } = this.context;
+        debugger;
+        const { usuarioLogin, pesquisar, pesquisarInativo } = this.context;
 
         usuarioLogin();
+        // pesquisarAtivo();
+
+        const tet = setInterval(pesquisarInativo, 1000);
+
 
         this.carregaProdutos();
     };
 
     componentDidUpdate() {
+        const { pesquisar, pesquisarInativo } = this.context;
 
-        // if(typeof this.props.match.params.filtro === 'undefined') {
-        //     if(this.state.filtrar) {
-        //         this.carregaProdutos();
-        //         this.setState({
-        //             filtrar : false
-        //         });
-        //     }
-        //     return;
-        // }
-        
-        // this.carregaProdutos();
-        // const { usuarioAutenticado } = this.context;
-        // this.carregaProdutos(this.state.page);
-        // this.setState({
-        //     filtrar : true
-        // });
-    }
+        if(!pesquisar) {
+            return;
+        }
+
+
+        this.carregaProdutos();
+    };
 
     carregaProdutos = async function(page = 1) {
         let response = null;
@@ -61,10 +56,11 @@ export default class PageMain extends Component {
         // console.log(response.data);
         // console.log('filtro: ' + JSON.parse(this.props.match.params.filtro));
 
-        if(typeof this.props.match.params.filtro === 'undefined') {
+        debugger;
+        if(typeof this.context.filtro === 'object') {
             response = await api.get(`/Produto`);
         } else {
-            let oFiltro = JSON.parse(this.props.match.params.filtro);;
+            let oFiltro = JSON.parse(this.context.filtro);
             response = await api.get(`/Produto/conteudo=${oFiltro.conteudo}&filtro=${oFiltro.filtro}`);
         }
 
@@ -84,6 +80,7 @@ export default class PageMain extends Component {
             pages    : totalPage,
             page,
         });
+
     }
 
     adicionaLocalStorage = produto => {
@@ -95,7 +92,12 @@ export default class PageMain extends Component {
     };
 
     nextPage = () => {
+        const { pesquisar, pesquisarInativo } = this.context;
         const { page, pages } = this.state;
+
+        if(pesquisar) {
+            pesquisarInativo();
+        }
 
         if(page == pages) {
             return;
@@ -107,7 +109,12 @@ export default class PageMain extends Component {
     };
 
     prevPage = () => {
+        const { pesquisar, pesquisarInativo } = this.context;
         const { page } = this.state;
+
+        if(pesquisar) {
+            pesquisarInativo();
+        }
 
         if(page == 1) {
             return;
