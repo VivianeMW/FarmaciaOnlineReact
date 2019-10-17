@@ -7,7 +7,7 @@ import NumberFormat from 'react-number-format';
 
 import { ContextoUsuario } from '../components/Session';
 
-const LIMIT_ITENS = 4;
+const LIMIT_ITENS = 3;
 
 export default class PageCarrinho extends Component {
 
@@ -18,10 +18,24 @@ export default class PageCarrinho extends Component {
         tProdutos : [],
         produto   : {},
         page      : 1,
-        pages     : 1
+        pages     : 1, 
+        atualizar : false
     }
 
     componentDidMount() {
+        this.carregaProdutos();
+    };
+
+    componentDidUpdate() {
+        debugger;
+        if(!this.state.atualizar) {
+            return;
+        }
+
+        this.setState({
+            atualizar : false
+        });
+
         this.carregaProdutos();
     };
 
@@ -55,7 +69,9 @@ export default class PageCarrinho extends Component {
 
     removeLocalStorege = (id) => {
         localStorage.removeItem(id);
-        window.location.reload();
+        this.setState({
+            atualizar : true
+        });
     };
 
     getPrecoTotal = () => {
