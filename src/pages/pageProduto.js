@@ -4,7 +4,7 @@ import api from '../services/api';
 
 import '../css/cssPageProduto.css';
 import ImgReme             from '../img/reme1.jpg';
-import { Redirect }        from 'react-router-dom';
+import { Redirect, Link }        from 'react-router-dom';
 import { ContextoUsuario } from '../components/Session';
 
 export default class Produto extends Component {
@@ -57,7 +57,9 @@ export default class Produto extends Component {
                     <h2>Bula</h2>
                     <p>{produto.descricao}</p>
                     {this.redireciona()}
-                    <button onClick={this.adicionaLocalStorage} className="btn-compra">ADD CARRINHO</button>
+                    <Link to={"/Compra/Endereco"}>
+                        <button onClick={this.adicionaLocalStorage} className="btn-compra">COMPRAR</button>
+                    </Link>
                 </div>
             </div>
         );

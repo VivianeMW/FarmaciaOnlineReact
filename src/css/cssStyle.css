@@ -56,9 +56,72 @@ body a:link {
     margin               : 10px;
 }
 
+.grid2 {
+    display              : grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap             : 10px;
+    margin               : 10px;
+}
+
+.grid3 {
+    display              : grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap             : 10px;
+    margin               : 10px;
+}
+
+.elem-linha {
+    display        : flex;
+    flex-direction : row;
+    justify-content: center;
+    align-items    : center;
+}
+
+.elem-svg {
+    height: 6.5em;
+    width : 6.2em;
+}
+
 .empty {
     font-size  : 32px;
     color      : #999;
     font-weight: bold;
     margin-top : 182px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.caixa-preenchimento-small {
+    width: 5em;
+}
+
+.caixa-preenchimento-midle {
+    width: 15em;
+}
+
+.circulo {
+    background-color: #7099e8;
+    border-radius: 3em;
+    height: 5em;
+    width: 5em;
+    margin: 3em;
+    padding-top: 1em;
+    padding-left: 1em;
+}
+
+.input-small {
+    width: 9em;
+}
+
+.list {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: left;
+    align-items: flex-start; */
 }

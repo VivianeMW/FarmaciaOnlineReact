@@ -156,7 +156,9 @@ export default class PageMain extends Component {
                                                     />
                                                 </span>
                                                 {/* {this.state.produto = produto} */}
-                                                <button onClick={ e =>this.adicionaLocalStorage(produto)} className="btn-compra">ADD CARRINHO</button>
+                                                <Link to={"/Compra/Endereco"}>
+                                                    <button onClick={ e =>this.adicionaLocalStorage(produto)} className="btn-compra">COMPRAR</button>
+                                                </Link>
                                             </div>
                                         </footer>
                                     </div>

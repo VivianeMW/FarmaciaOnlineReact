@@ -1,0 +1,17 @@
+.circulo-esquerdo {
+    padding-left: 1.5em;
+}
+
+.circulo-direito {
+    margin-left: -1.5em;
+}
+
+.div-progresso {
+    width: 20em;
+    background-color: #ddd;
+}
+
+.div-barra {
+    height: 0.20em;
+    background-color: #737eff;
+}

@@ -5,6 +5,8 @@ import '../css/cssPageCarrinho.css';
 import ImgReme      from '../img/reme1.jpg';
 import NumberFormat from 'react-number-format';
 
+import { Link } from 'react-router-dom';
+
 import { ContextoUsuario } from '../components/Session';
 
 const LIMIT_ITENS = 3;
@@ -27,7 +29,6 @@ export default class PageCarrinho extends Component {
     };
 
     componentDidUpdate() {
-        debugger;
         if(!this.state.atualizar) {
             return;
         }
@@ -79,6 +80,9 @@ export default class PageCarrinho extends Component {
         let preco = 0;
 
         for(let i = 0; i < tProdutos.length; i++) {
+            if(isNaN(tProdutos[i].preco)) {
+                continue;
+            }
             preco += tProdutos[i].preco;
         }
 
@@ -213,9 +217,9 @@ export default class PageCarrinho extends Component {
                                 </span>
                             </div>
                             <hr/>
-                            {/* <div className="div-resumo-botao">
-                                <button className="btn-compra">Continuar</button>
-                            </div>         */}
+                            <Link to={"/Compra/Endereco"}>
+                                <span><button className="btn-compra" type="button">Comprar</button></span>
+                            </Link>
                         </div>
                     ) : ""}
                 </div>
