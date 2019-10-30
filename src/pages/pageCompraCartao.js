@@ -90,14 +90,14 @@ export default class PageCompraCartao extends Component {
                     </p>
                 </div>
                 
-                <div className="cadastro-main-container">
+                <div className="form-main-container">
                     <header>
                         <strong>Pagar com um cartao</strong><br/>
                         <span>Os campos com * são obrigatórios</span>
                     </header>
                     
                     <hr/>
-                    <div className="cadastro-container">
+                    <div className="form-container">
                         <form>
                             <input
                                 id="ncartao"
@@ -125,7 +125,7 @@ export default class PageCompraCartao extends Component {
                                 id="pacelamento"
                                 placeholder="Em quantas parcelas"
                             />  
-                            <button type="button">Continuar</button>
+                            <button type="button" className="btn azul-roxo clicavel">Continuar</button>
                         </form>
                     </div>
                 </div>

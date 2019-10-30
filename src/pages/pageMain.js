@@ -128,9 +128,9 @@ export default class PageMain extends Component {
         
         const { authuser } = this.props;
         return (
-            <div className="main-container">
+            <div className="container-fundo">
                 {produtos.length > 0 ? (
-                    <ul> 
+                    <ul className="lista-4x2"> 
                         {produtos.map(produto =>{
                             return (
                                 <li key={produto.id}>
@@ -157,7 +157,7 @@ export default class PageMain extends Component {
                                                 </span>
                                                 {/* {this.state.produto = produto} */}
                                                 <Link to={"/Compra/Endereco"}>
-                                                    <button onClick={ e =>this.adicionaLocalStorage(produto)} className="btn-compra">COMPRAR</button>
+                                                    <button onClick={ e =>this.adicionaLocalStorage(produto)} className="btn azul-roxo clicavel">COMPRAR</button>
                                                 </Link>
                                             </div>
                                         </footer>
@@ -167,16 +167,28 @@ export default class PageMain extends Component {
                         })}     
                     </ul>
                 ) : (
-                    <div className="empty">
+                    <div className="vazia">
                         Acabou :(
                     </div>
                 )}
 
                 {produtos.length > 0? (
-                    <footer className="footer-main-container">
-                        <div className="actions">
-                            <button disabled={page == 1}     onClick={this.prevPage}>Anterior</button>
-                            <button disabled={page == pages} onClick={this.nextPage}>Proximo</button>
+                    <footer className="rodape">
+                        <div className="paginacao">
+                            <button 
+                                disabled={page == 1}   
+                                onClick={this.prevPage}
+                                className="btn azul-roxo clicavel"
+                            >
+                                Anterior
+                            </button>
+                            <button 
+                                disabled={page == pages} 
+                                onClick={this.nextPage}
+                                className="btn azul-roxo clicavel"
+                            >
+                                Proximo
+                            </button>
                         </div>
                     </footer>
                 ) : ""}

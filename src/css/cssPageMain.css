@@ -1,25 +1,16 @@
-.main-container {
-    max-width : 66em;
-    margin    : 0 auto;
-    padding   : 50px 0;
-    text-align: center; 
-    height    : 100%;
-    position  : relative;
-}
-
-.main-container ul {
+.lista-4x2 {
     list-style           : none;
     display              : grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap             : 2em;
+    grid-gap             : 1em;
 }
 
-.main-container ul li {
+.lista-4x2 li {
     display       : flex;
     flex-direction: column;
 }
 
-.main-container ul li footer {
+.lista-4x2 li footer {
     flex                 : 1;
     background-color     :#dcd9d9;
     background-attachment:#fff;
@@ -28,24 +19,17 @@
     border-radius        : 0 0 5px 5px;
 }
 
-.main-container ul li footer strong {
+.lista-4x2 li footer strong {
     font-size: 15px;
     color    : #333;
 }
 
-.main-container ul li footer p {
+.lista-4x2 li footer p {
     font-size  : 15px;
     line-height: 20px;
     color      : #999;
     margin-top : 5px;
     word-break : break-all;
-}
-
-.main-container .empty {
-    font-size  : 32px;
-    color      : #999;
-    font-weight: bold;
-    margin-top : 182px;
 }
 
 .div-card {
@@ -54,17 +38,6 @@
     border-radius   : 0px 0px 5px 5px;
     border          : 1px solid black;
     width: 15em;
-}
-
-.btn-compra {
-    margin-top   : 10px;
-    border       : 0;
-    border-radius: 4px;
-    padding      : 10px;
-    font-size    : 15px;
-    background   : #0433ff;
-    color        : #fff;
-    cursor       : pointer;
 }
 
 .footer-card {
@@ -77,53 +50,9 @@
     margin-top: 10px;
 }
 
-.btn-circle {
-    background-color: #bdbdbd;
-    border          : none;
-    color           : white;
-    padding         : 5px;
-    text-align      : center;
-    text-decoration : none;
-    display         : inline-block;
-    font-size       : 10px;
-    margin          : 4px 2px;
-    border-radius   : 50%;
-    cursor          : pointer;
-}
-
 #img-reme {
     height: 6em;
     width: 6em;
-}
-
-.actions {
-    display        : flex;
-    justify-content: space-between;
-    margin-top     : 1em;
-}
-
-.actions button {
-    padding      : 10px;
-    border-radius: 5px;
-    border       : 0;
-    background   : #0433ff;
-    color        : #fff;
-    font-size    : 16px;
-    font-weight  : bold;
-    cursor       : pointer;
-}
-
-.actions button[disabled] {
-    opacity: 0.5;
-    cursor : default;
-}
-
-.actions button:hover {
-    opacity: 0.7;
-}
-
-.actions button[disabled]:hover {
-    opacity: 0.5;
 }
 
 .footer-main-container {

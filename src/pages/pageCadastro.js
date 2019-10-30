@@ -75,13 +75,13 @@ export default class PageCadastro extends Component {
         const { username } = this.state;
         
         return (
-            <div className="cadastro-main-container">
+            <div className="form-main-container">
                 <header>
                     <strong>Crie sua conta</strong><br/>
                     <span>Os campos com * são obrigatórios</span>
                 </header>
                 <hr/>
-                <div className="cadastro-container">
+                <div className="form-container">
                     <form>
                         <input
                             id="nomecomp"
@@ -113,7 +113,7 @@ export default class PageCadastro extends Component {
                         <input
                             placeholder="Confirmar senha"
                         />
-                        <button type="button" onClick={this.cadastrar}>Criar Cadastro</button>
+                        <button className="btn azul-roxo clicavel" type="button" onClick={this.cadastrar}>Criar Cadastro</button>
                     </form>
                 </div>
             </div>

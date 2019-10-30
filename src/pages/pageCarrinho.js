@@ -168,7 +168,7 @@ export default class PageCarrinho extends Component {
                             })}    
                         </ul>
                     ): (
-                        <div className="empty">
+                        <div className="vazia">
                             Não há itens no carrinho :(
                         </div>
                     )}
@@ -189,7 +189,7 @@ export default class PageCarrinho extends Component {
                                     />
                                 </span>
                             </div>
-                            <div  className="itens-resumo">
+                            <div className="itens-resumo">
                                 <span>Frete</span>
                                 <span>
                                     <NumberFormat 
@@ -218,7 +218,7 @@ export default class PageCarrinho extends Component {
                             </div>
                             <hr/>
                             <Link to={"/Compra/Endereco"}>
-                                <span><button className="btn-compra" type="button">Comprar</button></span>
+                                <span><button className="btn azul-roxo clicavel" type="button">Comprar</button></span>
                             </Link>
                         </div>
                     ) : ""}
@@ -226,10 +226,22 @@ export default class PageCarrinho extends Component {
                 
                
                 {produtos.length > 0? (
-                    <footer className="footer-main-container">
-                        <div className="actions">
-                            <button disabled={page == 1}     onClick={this.prevPage}>Anterior</button>
-                            <button disabled={page == pages} onClick={this.nextPage}>Proximo</button>
+                    <footer className="rodape">
+                        <div className="paginacao">
+                            <button 
+                                disabled={page == 1}
+                                onClick={this.prevPage}
+                                className="btn azul-roxo clicavel"
+                            >
+                                Anterior
+                            </button>
+                            <button 
+                                disabled={page == pages} 
+                                onClick={this.nextPage}
+                                className="btn azul-roxo clicavel"
+                            >
+                                Proximo
+                            </button>
                         </div>
                     </footer>
                 ) : ""}

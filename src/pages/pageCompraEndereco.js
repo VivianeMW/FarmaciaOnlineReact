@@ -4,7 +4,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { ContextoUsuario } from '../components/Session';
 import BarraConfirmacao from '../components/barraConfirmacao';
 
-import '../css/cssPageCompra.css';
+import '../css/cssPageCompraEndereco.css';
 
 export default class PageCompraEndereco extends Component {
 
@@ -54,14 +54,14 @@ export default class PageCompraEndereco extends Component {
             <div className="container-list">
                 {this.redireciona()}
                 <BarraConfirmacao nivel={0} labels={['ENDEREÇO', 'PAGAMENTO']}/>
-                <div className="cadastro-main-container">
+                <div className="form-main-container">
                     <header>
                         <strong>Informe o endereço</strong><br/>
                         <span>Os campos com * são obrigatórios</span>
                     </header>
                     
                     <hr/>
-                    <div className="cadastro-container">
+                    <div className="form-container">
                         <form>
                             <input
                                 id="cidade"
@@ -84,7 +84,7 @@ export default class PageCompraEndereco extends Component {
                                 placeholder="CEP"
                             />
                             <Link to={"/Compra/Pagamento"}>
-                                <button type="button">Continuar</button>
+                                <button type="button" className="btn azul-roxo clicavel">Continuar</button>
                             </Link>
                         </form>
                     </div>

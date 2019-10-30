@@ -48,7 +48,7 @@ export default class Produto extends Component {
         const { produto } = this.state;
 
         return (
-            <div className="info-produto">
+            <div className="container-main-grid-d2 quebra-linha">
                 <div className="img-div-pr">
                     <img id="img-reme-grande" src={ImgReme}/>
                 </div>
@@ -58,7 +58,12 @@ export default class Produto extends Component {
                     <p>{produto.descricao}</p>
                     {this.redireciona()}
                     <Link to={"/Compra/Endereco"}>
-                        <button onClick={this.adicionaLocalStorage} className="btn-compra">COMPRAR</button>
+                        <button 
+                            onClick={this.adicionaLocalStorage} 
+                            className="btn azul-roxo clicavel"
+                        >
+                            COMPRAR
+                        </button>
                     </Link>
                 </div>
             </div>

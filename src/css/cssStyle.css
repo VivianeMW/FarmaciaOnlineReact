@@ -1,3 +1,7 @@
+/*======================================================*/
+/*=======================Geral==========================*/
+/*======================================================*/
+
 * {
     margin    : 0;
     padding   : 0;
@@ -11,7 +15,8 @@ html, body, #root {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background : #bff6ff;
+    /* background : #bff6ff; */
+    background :#dedddd66;
     color      : #333;
 }
 
@@ -22,6 +27,19 @@ body, input, button {
 body a:link {
     text-decoration: none;
     color          : none;
+}
+
+/*================================================*/
+/*====================Pagina======================*/
+/*================================================*/
+
+.container-fundo {
+    max-width : 67em;
+    margin    : 0 auto;
+    padding   : 50px 0px;
+    text-align: center; 
+    height    : 100%;
+    position  : relative;
 }
 
 .nav-ul {
@@ -49,13 +67,6 @@ body a:link {
     background-color: #05689c;
 }
 
-.container-list {
-    display              : grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap             : 10px;
-    margin               : 10px;
-}
-
 .grid2 {
     display              : grid;
     grid-template-columns: repeat(2, 1fr);
@@ -77,16 +88,164 @@ body a:link {
     align-items    : center;
 }
 
+.container-list {
+    display              : grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap             : 10px;
+    margin               : 10px;
+}
+
+.list {
+    display       : flex;
+    flex-direction: column;
+    /* justify-content: left;
+    align-items: flex-start; */
+}
+
+.container-main-grid-d2 {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 50px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 14em;
+}
+
+.vazia {
+    font-size  : 32px;
+    color      : #999;
+    font-weight: bold;
+    margin-top : 182px;
+}
+
+.rodape {
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+.paginacao {
+    display        : flex;
+    justify-content: space-between;
+    margin-top     : 1em;
+}
+
+.paginacao button[disabled] {
+    opacity: 0.5;
+    cursor : default;
+}
+
+
+.paginacao button[disabled]:hover {
+    opacity: 0.5;
+}
+
+/*================================================*/
+/*==================Elementos=====================*/
+/*================================================*/
+
+.circulo {
+    background-color: #7099e8;
+    border-radius   : 3em;
+    height          : 5em;
+    width           : 5em;
+    margin          : 3em;
+    padding-top     : 1em;
+    padding-left    : 1em;
+}
+
+/*===================SVG=====================*/
 .elem-svg {
     height: 6.5em;
     width : 6.2em;
 }
 
-.empty {
-    font-size  : 32px;
-    color      : #999;
-    font-weight: bold;
-    margin-top : 182px;
+/*=====================Botao======================*/
+.btn {
+    margin-top   : 10px;
+    border       : 0;
+    border-radius: 5px;
+    padding      : 10px;
+    font-size    : 15px;
+    font-weight  : bold;
+}
+
+.btn:hover {
+    opacity: 0.7;
+}
+
+.azul-roxo {
+    background   : #0433ff;
+    color        : #fff;
+}
+
+/*=================Propriedades===================*/
+
+.clicavel {
+    color  : #fff;
+    cursor : pointer;
+}
+
+/*=================Formulario=====================*/
+.form-container {
+    height         : 100%;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+.form-container form {
+    width         : 100%;
+    max-width     : 300px;
+    display       : flex;
+    flex-direction: column;
+}
+
+.form-container form input {
+    margin-top   : 20px;
+    border       : 1px solid #ddd;
+    border-radius: 4px;
+    height       : 30px;
+    padding      : 0 20px;
+    font-size    : 15px;
+    color        : #666;
+}
+
+
+.form-container form input::placeholder {
+    color: #999;
+}
+
+.form-main-container header {
+    margin-top  : 10px;
+    padding-left: 20px; 
+}
+
+.form-main-container header strong {
+    color: #070ff3;
+}
+
+.form-main-container header span {
+    color: #0c0c0c;
+}
+
+.form-main-container hr {
+    margin-top: 20px;
+}
+
+.form-main-container footer {
+    margin-top     : 20px;
+    display        : flex;
+    justify-content: center;
+    align-items    : center;
+}
+
+/*================================================*/
+/*================Configuracoes===================*/
+/*================================================*/
+
+.quebra-linha h1, p {
+    word-break : break-all;
 }
 
 .text-center {
@@ -105,23 +264,6 @@ body a:link {
     width: 15em;
 }
 
-.circulo {
-    background-color: #7099e8;
-    border-radius: 3em;
-    height: 5em;
-    width: 5em;
-    margin: 3em;
-    padding-top: 1em;
-    padding-left: 1em;
-}
-
 .input-small {
     width: 9em;
-}
-
-.list {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: left;
-    align-items: flex-start; */
 }

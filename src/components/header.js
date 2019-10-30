@@ -147,7 +147,7 @@ export default class Header extends Component {
                             />
                             {this.redireciona()}
                             <button onClick={this.busca} className="btn-input"><MdSearch /></button>
-                            <button onClick={this.trocaClasse} id="btn-filtro" className="btn-ic-clicavel"><MdFilterList /></button>
+                            <button onClick={this.trocaClasse} id="btn-filtro" className="btn-ic-clicavel clicavel"><MdFilterList className="clicavel"/></button>
                         </div>
                     </div>
                     <div id="div-caixa-oculta" className="caixa-oculta oculta">
@@ -157,17 +157,17 @@ export default class Header extends Component {
                     <div id="h-icon-user" className="h-header">
                         {(usuarioAutenticado == null)? (
                             <Link to={`/login`}>
-                                <MdAccountCircle />
+                                <MdAccountCircle className="clicavel" />
                             </Link>
                         ) : (
                             <Link to={`/User`}>
-                                <MdAccountCircle />
+                                <MdAccountCircle className="clicavel" />
                             </Link>
                         )}
                     </div>
                     <div id="h-icon-cart" className="h-header">
                         <Link to="/carrinho">
-                            <MdAddShoppingCart />
+                            <MdAddShoppingCart className="clicavel"/>
                         </Link>
                     </div>
                 </div>

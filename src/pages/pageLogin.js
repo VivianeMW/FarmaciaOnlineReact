@@ -55,14 +55,14 @@ export default class PageLogin extends Component {
     render() {
         
         return (
-            <div className="login-main-container">
+            <div className="form-main-container">
                 {this.redireciona()}
                 <header>
                     <strong>Já sou Cliente</strong><br/>
                     <span>Os campos com * são obrigatórios</span>
                 </header>
                 <hr/>
-                <div className="login-container">
+                <div className="form-container">
                     <form>
                         <input
                             id="email"
@@ -72,7 +72,13 @@ export default class PageLogin extends Component {
                             id="senha"
                             placeholder="Senha"
                         />
-                        <button type="button" onClick={this.logar} >Logar</button>
+                        <button 
+                            type="button" 
+                            onClick={this.logar} 
+                            className="btn azul-roxo clicavel"
+                        >
+                            Logar
+                        </button>
                     </form>
                 </div>
                 <hr/>

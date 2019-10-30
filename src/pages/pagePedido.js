@@ -142,10 +142,22 @@ class PagePedido extends Component {
                     )}
                 </div>
                 {pedidos.length > 0? (
-                    <footer className="footer-main-container">
-                        <div className="actions">
-                            <button disabled={page == 1}     onClick={this.prevPage}>Anterior</button>
-                            <button disabled={page == pages} onClick={this.nextPage}>Proximo</button>
+                    <footer className="rodape">
+                        <div className="paginacao">
+                            <button 
+                                disabled={page == 1}   
+                                onClick={this.prevPage}
+                                className="btn azul-roxo clicavel"
+                            >
+                                Anterior
+                            </button>
+                            <button 
+                                disabled={page == pages} 
+                                onClick={this.nextPage}
+                                className="btn azul-roxo clicavel"
+                            >
+                                Proximo
+                            </button>
                         </div>
                     </footer>
                 ) : ""}

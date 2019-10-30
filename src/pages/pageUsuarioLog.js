@@ -53,7 +53,7 @@ export default class PageUsuarioLog extends Component {
         const { user } = this.state;
 
         return (
-            <div className="user-main-container">
+            <div>
                 {this.redireciona()}
                 <header>
                     <Navbar />
