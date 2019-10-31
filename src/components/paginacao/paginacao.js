@@ -30,12 +30,10 @@ export default class Paginacao extends Component {
                 break;
         }
 
-        debugger;
         this.carregaProdutos();
     }
 
     carregaProdutos = async function(page = 1) {
-        debugger
         const { tipo, limite } = this.props;
         const LIMIT_ITENS      = limite;
         let response           = null;
@@ -81,8 +79,6 @@ export default class Paginacao extends Component {
                 result.push(elementos[i]);
             }
         }
-
-        debugger
 
         this.setState({
             elemMostra : result,

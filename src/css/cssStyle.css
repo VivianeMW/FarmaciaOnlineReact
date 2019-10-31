@@ -88,6 +88,14 @@ body a:link {
     align-items    : center;
 }
 
+.elem-linha-espaco-entre {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1em;
+    margin-left: 26em;
+    max-width: 34em;
+}
+
 .container-list {
     display              : grid;
     grid-template-columns: repeat(1, 1fr);

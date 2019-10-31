@@ -76,7 +76,7 @@ export default class BarraConfirmacao extends Component {
                 </div>
                 <div>
                     {labels.length > 0 ?(
-                        <div className="elem-linha">
+                        <div className="elem-linha-espaco-entre">
                             {labels.map(label =>{
                                 return(
                                     <p key={label._id}>{label}</p>

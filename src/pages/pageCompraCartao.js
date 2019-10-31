@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Redirect }          from 'react-router-dom';
+import { Redirect, Link }          from 'react-router-dom';
 import { ContextoUsuario }   from '../components/Session';
 import BarraConfirmacao      from '../components/barraConfirmacao';
 import ValoTotaItensCarrinho from '../components/valorTotalItensCarrinho';
@@ -95,7 +95,9 @@ export default class PageCompraCartao extends Component {
                                 id="pacelamento"
                                 placeholder="Em quantas parcelas"
                             />  
-                            <button type="button" className="btn azul-roxo clicavel">Continuar</button>
+                            <Link to={"/"}>
+                                <button type="button" className="btn azul-roxo clicavel">Continuar</button>
+                            </Link>
                         </form>
                     </div>
                 </div>

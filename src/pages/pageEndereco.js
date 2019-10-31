@@ -16,7 +16,6 @@ class PageEndereco extends Component {
     }
 
     componentDidMount() {
-        debugger
         let { usuarioAutenticado } = this.context;
         let  bRedireciona = false;
 

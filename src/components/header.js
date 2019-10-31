@@ -115,7 +115,6 @@ export default class Header extends Component {
     }
 
     // redeirecionaUsuarioLogin = () => {
-    //     debugger;
     //     const { usuarioAutenticado } = this.context;
         
     //     if(usuarioAutenticado == null) {
