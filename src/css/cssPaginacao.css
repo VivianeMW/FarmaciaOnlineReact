@@ -1,3 +1,72 @@
+/*============================================*/
+/*===============PaginacaoMain================*/
+/*============================================*/
+.lista-4x2 {
+    list-style           : none;
+    display              : grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap             : 1em;
+}
+
+.lista-4x2 li {
+    display       : flex;
+    flex-direction: column;
+}
+
+.lista-4x2 li footer {
+    flex                 : 1;
+    background-color     :#dcd9d9;
+    background-attachment:#fff;
+    padding              : 5px 20px;
+    text-align           : left;
+    border-radius        : 0 0 5px 5px;
+}
+
+.lista-4x2 li footer strong {
+    font-size: 15px;
+    color    : #333;
+}
+
+.lista-4x2 li footer p {
+    font-size  : 15px;
+    line-height: 20px;
+    color      : #999;
+    margin-top : 5px;
+    word-break : break-all;
+}
+
+.div-card {
+    background-color: #fff; 
+    box-shadow      : 5px 5px 4px;
+    border-radius   : 0px 0px 5px 5px;
+    border          : 1px solid black;
+    width: 15em;
+}
+
+.footer-card {
+    display              : grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap             : 30px;
+}
+
+.footer-card span {
+    margin-top: 10px;
+}
+
+#img-reme {
+    height: 6em;
+    width: 6em;
+}
+
+.footer-main-container {
+    position:absolute;
+    bottom:0;
+    width:100%;
+}
+
+/*============================================*/
+/*=============PaginacaoCarrinho==============*/
+/*============================================*/
 .main-container-carrinho {
     max-width            : 66em;
     margin               : 0 auto;
@@ -68,6 +137,33 @@
     flex-direction : column;
 }
 
+.h-titulo {
+    text-align: left;
+}
+
+#img-reme-peq {
+    height: 3em;
+}
+
+.main-container-carrinho select {
+    width: 3em;
+    height: 3em;
+    /* text-align: center; */
+    border-radius: 9px;
+}
+
+.div-qtd-carrinho {
+    display: grid;
+}
+
+.div-qtd-carrinho button {
+    background: none;
+    border    : none;
+    width     : 4em;
+    cursor    : pointer;
+}
+
+/*=============DivResumo==============*/
 .div-resumo {    
     display: flex;
     flex-direction: column;
@@ -78,10 +174,6 @@
     width: 16em;
     height: 15em;
     box-shadow: 5px 5px 5px;
-}
-
-.h-titulo {
-    text-align: left;
 }
 
 .itens-resumo {
@@ -114,26 +206,4 @@
 
 .div-resumo-botao {
    padding: 10px;
-}
-
-#img-reme-peq {
-    height: 3em;
-}
-
-.main-container-carrinho select {
-    width: 3em;
-    height: 3em;
-    /* text-align: center; */
-    border-radius: 9px;
-}
-
-.div-qtd-carrinho {
-    display: grid;
-}
-
-.div-qtd-carrinho button {
-    background: none;
-    border    : none;
-    width     : 4em;
-    cursor    : pointer;
 }

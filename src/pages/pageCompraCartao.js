@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { Redirect } from 'react-router-dom';
-import { ContextoUsuario } from '../components/Session';
-import BarraConfirmacao from '../components/barraConfirmacao';
-import NumberFormat     from 'react-number-format';
+import { Redirect }          from 'react-router-dom';
+import { ContextoUsuario }   from '../components/Session';
+import BarraConfirmacao      from '../components/barraConfirmacao';
+import ValoTotaItensCarrinho from '../components/valorTotalItensCarrinho';
 
 export default class PageCompraCartao extends Component {
 
@@ -12,20 +12,11 @@ export default class PageCompraCartao extends Component {
     state = {
         user : {},
         redireciona : false,
-        produtos : []
     }
     
     componentDidMount() {
         let { usuarioAutenticado } = this.context;
         let bRedireciona = false;
-
-        let aProdutos = [],
-        chaves        = Object.keys(localStorage),
-        i             = chaves.length;
-
-        while( i-- ) {
-            aProdutos.push(JSON.parse(localStorage.getItem(chaves[i])));
-        }    
 
         if(usuarioAutenticado == null) {
             bRedireciona = true;
@@ -48,20 +39,6 @@ export default class PageCompraCartao extends Component {
             redireciona : true
         });
     }
-    
-    getPrecoTotal = () => {
-        const { produtos } = this.state;
-        let preco = 0;
-
-        for(let i = 0; i < produtos.length; i++) {
-            if(isNaN(produtos[i].preco)) {
-                continue;
-            }
-            preco += produtos[i].preco;
-        }
-
-        return preco;
-    };
 
     redireciona = ()=> {
         if(!this.state.redireciona) {
@@ -79,14 +56,7 @@ export default class PageCompraCartao extends Component {
                 <div className="elem-linha">
                     <p>
                         Valor total: 
-                        <NumberFormat 
-                            value={this.getPrecoTotal()} 
-                            displayType={'text'}
-                            prefix={'R$'}
-                            decimalSeparator={','}
-                            decimalScale={2}
-                            fixedDecimalScale={true}
-                        />
+                        <ValoTotaItensCarrinho />
                     </p>
                 </div>
                 

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect, Link }  from 'react-router-dom';
 import { ContextoUsuario } from '../components/Session';
-import BarraConfirmacao from '../components/barraConfirmacao';
+import BarraConfirmacao    from '../components/barraConfirmacao';
 
 import '../css/cssPageCompraEndereco.css';
 

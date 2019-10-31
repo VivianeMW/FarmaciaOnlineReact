@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+
 import { Redirect } from 'react-router-dom';
 
 import { ContextoUsuario } from '../components/Session';
-import Navbar from '../components/usuario/navbar';
-
+import Navbar              from '../components/usuario/navbar';
 
 class PageEndereco extends Component {
 

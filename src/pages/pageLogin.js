@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import '../css/cssPageLogin.css';
 import { Link, Redirect } from 'react-router-dom';
 import { ContextoUsuario } from '../components/Session';
 
+import '../css/cssPageLogin.css';
 
 export default class PageLogin extends Component {
     

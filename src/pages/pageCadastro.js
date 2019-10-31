@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import '../css/cssPageCadastro.css';
-
 import { ContextoUsuario } from '../components/Session';
 import api from '../services/api';
+
+import '../css/cssPageCadastro.css';
 
 export default class PageCadastro extends Component {
     
